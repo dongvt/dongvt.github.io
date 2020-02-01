@@ -7,7 +7,7 @@ const quiz = [
     { name: "Batman", realName: "Bruce Wayne" },
 ];
 const view = new View();
-const game = new Game();
+const game = new Game(view);
 
 view.score = document.querySelector('#score strong')
 view.question = document.getElementById('question')
