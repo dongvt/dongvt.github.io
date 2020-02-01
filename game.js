@@ -2,12 +2,12 @@
 // View Object
 export class View {
     contructor() {
-        score: document.querySelector('#score strong')
-        question: document.getElementById('question')
-        result: document.getElementById('result')
-        info: document.getElementById('info')
-        start: document.getElementById('start')
-        response: document.getElementById('response')
+        this.score = document.querySelector('#score strong')
+        this.question = document.getElementById('question')
+        this.result = document.getElementById('result')
+        this.info = document.getElementById('info')
+        this.start = document.getElementById('start')
+        this.response = document.getElementById('response')
     }
     
     render(target, content, attributes) {
@@ -44,6 +44,7 @@ export class View {
 }
 
 export class Game  {
+    
     start(quiz) {
         this.score = 0;
         this.questions = [...quiz];
