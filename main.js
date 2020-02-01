@@ -9,12 +9,12 @@ const quiz = [
 const view = new View();
 const game = new Game();
 
-this.score = document.querySelector('#score strong')
-this.question = document.getElementById('question')
-this.result = document.getElementById('result')
-this.info = document.getElementById('info')
-this.start = document.getElementById('start')
-this.response = document.getElementById('response')
+view.score = document.querySelector('#score strong')
+view.question = document.getElementById('question')
+view.result = document.getElementById('result')
+view.info = document.getElementById('info')
+view.start = document.getElementById('start')
+view.response = document.getElementById('response')
 
 view.start.addEventListener('click', () => game.start(quiz), false);
 view.response.addEventListener('submit', (event) => game.check(event), false);
