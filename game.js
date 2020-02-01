@@ -1,5 +1,5 @@
 
-// View Object
+// View Class
 export class View {
     contructor() {
         this.score = document.querySelector('#score strong')
