@@ -26,7 +26,7 @@ export class View {
         this.response.answer.value = '';
         this.response.answer.focus();
     }
-    setup() {
+    setup(game) {
         this.show(this.question);
         this.show(this.response);
         this.show(this.result);
@@ -44,18 +44,20 @@ export class View {
 }
 
 export class Game  {
-    
-    start(quiz) {
+    constructor(view) {
+        this.view = view
+    }
+    start(quiz,view) {
         this.score = 0;
         this.questions = [...quiz];
-        view.setup();
+        this.view.setup(this);
         this.ask();
     }
     ask(name) {
         if (this.questions.length > 0) {
             this.question = this.questions.pop();
             const question = `What is ${this.question.name}'s real name?`;
-            view.render(view.question, question);
+            this.view.render(this.view.question, question);
         }
         else {
             this.gameOver();
@@ -63,21 +65,21 @@ export class Game  {
     }
     check(event) {
         event.preventDefault();
-        const response = view.response.answer.value;
+        const response = this.view.response.answer.value;
         const answer = this.question.realName;
         if (response === answer) {
-            view.render(view.result, 'Correct!', { 'class': 'correct' });
+            this.view.render(this.view.result, 'Correct!', { 'class': 'correct' });
             this.score++;
-            view.render(view.score, this.score);
+            this.view.render(this.view.score, this.score);
         } else {
-            view.render(view.result, `Wrong! The correct answer was ${answer}`, { 'class': 'wrong' });
+            this.view.render(this.view.result, `Wrong! The correct answer was ${answer}`, { 'class': 'wrong' });
         }
-        view.resetForm();
+        this.view.resetForm();
         this.ask();
     }
     gameOver() {
-        view.render(view.info, `Game Over, you scored ${this.score} point${this.score !== 1 ? 's' : ''}`);
-        view.teardown();
+        this.view.render(this.view.info, `Game Over, you scored ${this.score} point${this.score !== 1 ? 's' : ''}`);
+        this.view.teardown();
     }
 }
 
