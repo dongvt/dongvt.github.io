@@ -36,7 +36,7 @@ const hikeList = [
     }
 ];
 
-alert("working?");
+alert("working??");
 
 const hikeObject = new Hikes();
 //on load grab the array and insert it into the page
