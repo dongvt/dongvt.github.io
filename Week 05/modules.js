@@ -1,7 +1,10 @@
-const imgBasePath = 'http://byui-cit.github.io/cit261/examples/';
+
 
 export class Hikes {
 
+    constructor(){
+        this.imgBasePath = 'http://byui-cit.github.io/cit261/examples/';
+    }
     
     showHikeList(hikeListElement) {
         hikeListElement.innerHTML = '';
@@ -18,7 +21,7 @@ export class Hikes {
         const item = document.createElement('li');
 
         item.innerHTML = ` <h2>${hike.name}</h2>
-          <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
+          <div class="image"><img src="${this.imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
           <div>
                   <div>
                       <h3>Distance</h3>
