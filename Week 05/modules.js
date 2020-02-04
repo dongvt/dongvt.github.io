@@ -1,9 +1,9 @@
 
 
-export class Hikes {
+export default class Hikes {
 
     constructor(){
-        this.imgBasePath = 'http://byui-cit.github.io/cit261/examples/'
+        this.imgBasePath = 'http://byui-cit.github.io/cit261/examples/';
     }
     
     showHikeList(hikeListElement) {
