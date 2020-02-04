@@ -39,5 +39,6 @@ const hikeList = [
 
 
 const hikeObject = new Hikes();
+const hikeListElement = document.getElementById('hikes');
 //on load grab the array and insert it into the page
-window.addEventListener('load', hikeObject.showHikeList(hikeList));
+window.addEventListener('load', hikeObject.showHikeList(hikeList,hikeListElement));
