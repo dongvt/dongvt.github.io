@@ -1,4 +1,4 @@
-import Hikes from './modules.js'
+import Hikes from './modules.js';
 
 //create an array of hikes
 const hikeList = [
