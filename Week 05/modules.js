@@ -6,7 +6,7 @@ export default class Hikes {
     
     showHikeList(hikeList,hikeListElement) {
         hikeListElement.innerHTML = '';
-        renderHikeList(hikeList, hikeListElement);
+        this.renderHikeList(hikeList, hikeListElement);
     }
 
     renderHikeList(hikes, parent) {
