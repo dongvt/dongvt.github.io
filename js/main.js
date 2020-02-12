@@ -22,6 +22,6 @@ htmlElements.screen.addEventListener('touchend',event => {
     }
         
     if (buttonClicked === "checked") {
-        
+        toDo.completeToDo(description);
     }
 },false);
