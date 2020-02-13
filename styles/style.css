@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(-90deg, #FFFCF9, #9AC4F8);
+    background: #F9FAFD;
 
 }
 
@@ -12,10 +12,36 @@ body {
 }
 
 .item {
+    padding: 10px;
     display: grid;
-    grid-template-columns: 30% 40% 30%;
-    border: 1px solid green;
-    height: 8em;
+    grid-template-columns: 10% 80% 10%;
+    border-bottom: 1px solid rgba(178, 178, 178, 0.8);
+    overflow-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444
+    
+    
+}
+
+ .drop {
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.description {
+    padding-left: 20px;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.checked {
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #addNewToDo {
@@ -30,8 +56,16 @@ body {
     height: 100%;
     width: 75%;
     border-radius: 10px;
+    border-color: rgba(178, 178, 178, 0.8);
+    box-sizing: border-box;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
     outline: none;
     padding-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
