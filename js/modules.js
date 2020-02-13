@@ -5,7 +5,6 @@ export class ListItem {
         this.description = "";
         this.status = false;
         this.elements = elements;
-        localStorage.clear();
     }
 
     getList() {
@@ -66,12 +65,16 @@ export class ListItem {
         if (completeListString === null) return;
 
         for(const item of completeListObject) {
-            if (item.status) done = "done";
-            else done = "pending";
+            if (item.status) done = "checked";
+            else done = "unchecked";
             HTMLItems += `<div class="item">
-            <div class="checked">${done}</div>
+            <div class="checked">
+                <img src="images/${done}.png" atl = "Delete Item" class="checkedIcon"/>
+            </div>
             <div class="description">${item.description}</div>
-            <div class="drop">Borrar</div>
+            <div class="drop">
+                <img src="images/delete.png" atl = "Delete Item" class="dropIcon"/>
+            </div>
             </div>`;
         }
         this.elements.screen.innerHTML = HTMLItems;

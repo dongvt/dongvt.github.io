@@ -15,13 +15,17 @@ htmlElements.screen.addEventListener('touchend',event => {
     //Get the description
     //Because the description is in another div, but still inside item div
     //We get the parent, and inside the parent make a query selector for the description
-    const description = event.target.parentElement.querySelector(".description").innerHTML;
+    const description = event.
+                        target.
+                        parentElement.
+                        parentElement.
+                        querySelector(".description").innerHTML;
     const buttonClicked = event.target.getAttribute("class");
-    if (buttonClicked === "drop") {
+    if (buttonClicked === "dropIcon") {
         toDo.dropToDo(description);
     }
         
-    if (buttonClicked === "checked") {
+    if (buttonClicked === "checkedIcon") {
         toDo.completeToDo(description);
     }
 },false);
