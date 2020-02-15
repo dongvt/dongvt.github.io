@@ -4,12 +4,14 @@ const htmlElements = new Elements();
 htmlElements.screen = document.getElementById("listContainer");
 htmlElements.description = document.getElementById("addTodoInput");
 htmlElements.addButton = document.getElementById("addToDoButton");
+htmlElements.filter = document.getElementById("filter");
 
 const toDo = new ListItem(htmlElements);
 //Show storeged list
 toDo.showList();
 
 //Listeners
+htmlElements.filter.addEventListener('touchend',event => toDo.filter(event),false);
 htmlElements.addButton.addEventListener('touchend',() => toDo.addNewToDo(),false);
 htmlElements.screen.addEventListener('touchend',event => {
     //Get the description

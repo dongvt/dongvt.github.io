@@ -1,5 +1,8 @@
 const JSONString = "";
 
+let completeListString;
+let completeListObject;
+
 export class ListItem {
     constructor(elements) {
         this.description = "";
@@ -8,11 +11,13 @@ export class ListItem {
     }
 
     getList() {
-        
+        completeListString = localStorage.getItem('toDoList');
+        completeListObject = JSON.parse(completeListString);
     }
 
     saveAll() {
-        
+        completeListString = JSON.stringify(completeListObject);
+        localStorage.setItem('toDoList',completeListString);
     }
     
     addNewToDo(description){
@@ -20,19 +25,18 @@ export class ListItem {
         this.description = this.elements.description.value;
         
         //Get item ToDo List
-        let completeListString = localStorage.getItem('toDoList');
-        let completeListObject = JSON.parse(completeListString);
+        this.getList();
+
         if (completeListObject === null) {
             completeListObject = new Array();
         }
 
         completeListObject.push(this);
 
-        completeListString = JSON.stringify(completeListObject);
-        localStorage.setItem('toDoList',completeListString);
-
+        //Reset text field
+        this.elements.description.value = "";
+        this.saveAll();
         this.showList();
-        
     }
 
     removeToDo(){
@@ -41,8 +45,7 @@ export class ListItem {
 
     completeToDo(description) {
         'use strict';
-        let completeListString = localStorage.getItem('toDoList');
-        let completeListObject = JSON.parse(completeListString);
+        this.getList();
 
         const itemToCheck = completeListObject.find(item => item.description == description);
         if (itemToCheck.status)
@@ -50,34 +53,41 @@ export class ListItem {
         else
             itemToCheck.status = true;
 
-        completeListString = JSON.stringify(completeListObject);
-        localStorage.setItem('toDoList',completeListString);
+        this.saveAll();
         this.showList();
     }
 
-    showList() {
+    showList(list) {
         'use strict';
-        const completeListString = localStorage.getItem('toDoList');
-        const completeListObject = JSON.parse(completeListString);
+        if(typeof list === 'undefined') {
+            this.getList(); //Get full list when there are not filters
+            list = completeListObject;
+        }
+        if (list === null) return;
+
         let done = "";
         let HTMLItems = "";
+        let itemLeft = 0;
 
-        if (completeListString === null) return;
-
-        for(const item of completeListObject) {
+        for(const item of list) {
             if (item.status) done = "checked";
-            else done = "unchecked";
+            else {
+                itemLeft++;
+                done = "unchecked";
+            } 
+
             HTMLItems += `<div class="item">
-            <div class="checked">
-                <img src="images/${done}.png" atl = "Delete Item" class="checkedIcon"/>
-            </div>
-            <div class="description">${item.description}</div>
-            <div class="drop">
-                <img src="images/delete.png" atl = "Delete Item" class="dropIcon"/>
-            </div>
-            </div>`;
+                        <div class="checked">
+                            <img src="images/${done}.png" atl = "Delete Item" class="checkedIcon"/>
+                        </div>
+                        <div class="description">${item.description}</div>
+                        <div class="drop">
+                            <img src="images/delete.png" atl = "Delete Item" class="dropIcon"/>
+                        </div>
+                        </div>`;
         }
         this.elements.screen.innerHTML = HTMLItems;
+        this.elements.filter.querySelector("#pending").innerHTML = itemLeft;
     }
 
     dropToDo(description) {
@@ -86,19 +96,28 @@ export class ListItem {
         //2. Get the index of that item
         //3. Delete the item using the index.
 
-        let completeListString = localStorage.getItem('toDoList');
-        let completeListObject = JSON.parse(completeListString);
+        this.getList();
 
         const itemToDrop = completeListObject.find(item => item.description == description);
         completeListObject.splice(completeListObject.indexOf(itemToDrop),1);
 
-        completeListString = JSON.stringify(completeListObject);
-        localStorage.setItem('toDoList',completeListString);
+        this.saveAll();
         this.showList();
     }
 
-    filter() {
-        
+    filter(evt) {
+        this.getList();
+        const filterType = evt.target.id;
+        let newList = completeListObject;
+
+        if (filterType == "filterCompleted"){
+            newList = completeListObject.filter(item => item.status);
+        } 
+        else if (filterType == "filterActive") {
+            newList = completeListObject.filter(item => !item.status);
+        }
+
+        this.showList(newList);
     }
 }
 
@@ -107,5 +126,6 @@ export class Elements{
         this.screen = "";
         this.addButton = "";
         this.description = "";
+        this.filter = "";
     }
 }
