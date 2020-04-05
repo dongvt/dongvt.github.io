@@ -1,5 +1,5 @@
 body {
-    background: #F9FAFD;
+    background: #F5F0F0;
 
 }
 
@@ -47,11 +47,12 @@ body {
 #addNewToDo {
     position: fixed;
     width: 100%;
-    height: 4em;
-    bottom: 20px;
-    
-    
+    height: 46px;
+    bottom: 30px;
+       
 }
+
+
 #addTodoInput {
     height: 100%;
     width: 75%;
@@ -72,41 +73,57 @@ body {
     color: #999;
     font-size: 16px;
     padding-left: 10px;
-
-}
-::-moz-placeholder { /* Firefox 19+ */
+    
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
     color: #999;
-}
-:-ms-input-placeholder { /* IE 10+ */
+  }
+  :-ms-input-placeholder { /* IE 10+ */
     color: #999;
-}
-:-moz-placeholder { /* Firefox 18- */
+  }
+  :-moz-placeholder { /* Firefox 18- */
     color: #999;
-}
+  }
 
 #addToDoButton {
     width: 50px;
-    height: 50px;
+    height: 45px;
     margin: 5px;
     padding: 5;
     left: 0;
-    border-radius: 20%;
+    border-radius: 40%;
     color: black;
     font-weight: bolder;
     font-size: 20px;
-    
+    background-image: linear-gradient(to right, #25D366 , #128C7E);
+    color: seashell;
+    border: none;
 }
 
-#taskLeft, #filterAll, #filterCompleted, #filterActive {
-    margin: auto;
-    text-align: center;
-    align-content: center;
+.drop .description .checked {
+    color: red;
+    text-decoration: underline;
+    border: 1px solid red;
 }
 
 #filter {
     display: flex;
-    flex-direction: row;
-    height: 4em;
-    text-align: center;
-    align-content: center;
+    width: 100%;
 }
+
+#filter div {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    background-image: linear-gradient(to right, #075E54 , #128C7E);
+    color: seashell;
+    border: none;
+    
+
+}
+
