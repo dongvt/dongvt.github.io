@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+
+  const runned = (operator) => {
+      var number1 = parseInt(document.getElementById("number1").value);
+      var number2 = parseInt(document.getElementById("number2").value);
+
+      var outputfield = document.getElementById("display_result");
+      
+      switch(operator) {
+        case "+": 
+          outputfield.innerHTML = sum(number1, number2);
+          break;
+        case "-":
+          outputfield.innerHTML = sub(number1, number2);
+          break;
+        case "*":
+          outputfield.innerHTML = mul(number1, number2);
+          break;
+        default:
+          document.getElementById("display_result").innerHTML = "Error";
+      }
+      
+    }
+
+    function sub(number1, number2) { //subtract
+      return number1 - number2;
+    }
+
+    const mul = function(number1, number2) { //multiplication
+      return number1 * number2;
+    }
+
+    const sum = (number1, number2) => { //Add function
+        return parseInt(number1) + parseInt(number2);
+    }
+  </script>
+</head>
+<body>
+  <input placeholder="number1" type="number" id="number1" />
+  <input placeholder="number2" type="number" id="number2" />
+  <button onClick="runned('+')">Add</button>
+  <button onClick="runned('-')">Subtract</button>
+  <button onClick="runned('*')">Multiplcation</button>
+  <div id="display_result">Result: </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+#container {
+    display: grid;
+    height: 30em;
+    grid-template-columns: 10em 10em 10em;
+    margin: auto;
+    border: 1px solid green;
+}
+
+.box {
+    border: 1px solid red;
+}
