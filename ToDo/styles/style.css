@@ -1,6 +1,9 @@
 body {
     background: #F9FAFD;
-
+    margin: 0;
+    padding: 0;
+    width: auto;
+    font-family: 'Arial';
 }
 
 #listContainer {
@@ -8,7 +11,6 @@ body {
     grid-template-columns: 100%;
     max-width: 600px;
     margin: 50px auto;
-    
 }
 
 .item {
@@ -21,11 +23,9 @@ body {
     font-size: 16px;
     font-weight: bold;
     color: #444
-    
-    
 }
 
- .drop {
+.drop {
     margin-left: 10px;
     margin-top: auto;
     margin-bottom: auto;
@@ -45,66 +45,84 @@ body {
 }
 
 #addNewToDo {
+    margin: 0px;
     position: fixed;
     width: 100%;
     height: 4em;
-    bottom: 20px;
-    
-    
+    bottom: 5px;
+    background-image: linear-gradient( rgba(212, 212, 212), rgb(242, 242, 242), rgb(212, 212, 212));
 }
+
 #addTodoInput {
-    height: 100%;
+    /*height: 100%;*/
+    margin-top: 2%;
+    height: 50px;
     width: 75%;
-    border-radius: 10px;
+    border-radius: 0px 25px 25px 0px;
     border-color: rgba(178, 178, 178, 0.8);
     box-sizing: border-box;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
+    border: none;
     outline: none;
     padding-left: 15px;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
     color: #999;
     font-size: 16px;
     padding-left: 10px;
+}
 
-}
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+    /* Firefox 19+ */
     color: #999;
 }
-:-ms-input-placeholder { /* IE 10+ */
+
+:-ms-input-placeholder {
+    /* IE 10+ */
     color: #999;
 }
-:-moz-placeholder { /* Firefox 18- */
+
+:-moz-placeholder {
+    /* Firefox 18- */
     color: #999;
 }
 
 #addToDoButton {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    padding: 5;
-    left: 0;
-    border-radius: 20%;
-    color: black;
-    font-weight: bolder;
-    font-size: 20px;
-    
+    position: fixed;
+    margin-top: 3.5%;
+    margin-left: 3%;
+    color: grey;
+    font-weight: 500;
+    font-size: 2em;
 }
 
-#taskLeft, #filterAll, #filterCompleted, #filterActive {
-    margin: auto;
+#taskLeft,
+#filterAll,
+#filterCompleted,
+#filterActive {
     text-align: center;
     align-content: center;
+    height: 2em;
+    padding-top: 15px;
+    border-right: solid 1px white;
+    color: grey;
+    background-image: linear-gradient( rgba(212, 212, 212), rgb(242, 242, 242), rgb(212, 212, 212));
+    transition-duration: 0.5s;
+}
+
+#taskLeft:active,
+#filterAll:active,
+#filterCompleted:active,
+#filterActive:active {
+    box-shadow: 0.0em 0.5em 0.5em rgb(34, 77, 109);
+    transition-duration: 0.5s;
 }
 
 #filter {
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     flex-direction: row;
     height: 4em;
     text-align: center;
