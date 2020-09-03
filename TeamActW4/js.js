@@ -14,11 +14,15 @@ const gameMatrix = (boardObject) => {
     let gMatrix = [size];
     for(let i = 0 ; i < size ;i++)
         gMatrix[i] = [size];
-   //then fill the new matrux information, with the boxes content
+   //then fill the new matrix information, with the boxes content
     let i = 0;
     for (let x = 0; x < size ;x++) {
         for (let y = 0; y < size ;y++) {
-            gMatrix[x][y] = boxes[i++].innerHTML;
+            if  (!typeof boxes[i++].children[0] == "undefined")
+                gMatrix[x][y] = boxes[i++].children[0].innerHTML;
+            else 
+                gMatrix[x][y] = boxes[i++].innerHTML;
+            
         }
     }
     return gMatrix;
@@ -98,7 +102,7 @@ button.addEventListener("click",resetGame,false);
 board.addEventListener("click",function(event) {
     const cell = event.target;
     let turnValue = "";
-    //if the element is nor empty don't do anything
+    //if the element is not empty don't do anything
     if (event.target.innerHTML === "") {
         if (turn) {
             turnValue = "O";
@@ -108,10 +112,11 @@ board.addEventListener("click",function(event) {
             turnValue = "X";
             turn = true;
         } 
-        cell.innerHTML = turnValue;
+        cell.innerHTML = `<span class="letterBox">${turnValue}</span>`;
         if (validateWinGame(turnValue)){
             resetGame();
         }
     }        
 
-},false)
+},false) 
+        //in   //end    //incrementation
