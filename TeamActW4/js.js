@@ -1,12 +1,12 @@
 const button = document.getElementById("reset");
-const board = document.getElementById("container");
-const boxes = document.getElementsByClassName("box");
+const board  = document.getElementById("container");
+const boxes  = document.getElementsByClassName("box");
 
 let turn = false; //false -> player one true -> player 2
 let turnCount = 0;
 let size = Math.sqrt(boxes.length); /* If it is a squere the box will give us the dimention
                                     ** Tic tac toe will be always 3x3*/
-
+console.log(boxes[0]);
 //The box array is a lineal array, to actualy check the resuts
 //We would need to put into a matrix (two dimension array)
 const gameMatrix = (boardObject) => {
@@ -18,11 +18,12 @@ const gameMatrix = (boardObject) => {
     let i = 0;
     for (let x = 0; x < size ;x++) {
         for (let y = 0; y < size ;y++) {
-            if  (!typeof boxes[i++].children[0] == "undefined")
-                gMatrix[x][y] = boxes[i++].children[0].innerHTML;
+            if  (typeof boxes[i].children[0] != "undefined")
+                gMatrix[x][y] = boxes[i].children[0].innerHTML;
             else 
-                gMatrix[x][y] = boxes[i++].innerHTML;
+                gMatrix[x][y] = boxes[i].innerHTML;
             
+            i++;
         }
     }
     return gMatrix;
