@@ -1,10 +1,17 @@
-import {Star} from './Star.js';
+//import {Star} from './Star.js';
+import { GiantStar } from './GiantStar.js';
+import { StandardStar } from './StandardStar.js';
 
 
 const canvas = document.getElementById('main');
 const ctx = canvas.getContext('2d');
 const stars = [];
 const screen = {};
+
+
+const probability = (percent) => {
+    return Math.random() * 100 < percent;
+}
 
 const draw = () => {
     
@@ -25,7 +32,7 @@ const resetAnimation = () => {
     stars.splice(0,stars.length);
 
     for(let i = 0; i < starCount ; i++) {
-        stars.push(new Star(ctx,screen));
+        stars.push(probability(90) ? new StandardStar(ctx,screen) : new GiantStar(ctx,screen));
         stars.at(-1).begin();
     }
     
